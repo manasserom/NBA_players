@@ -17,6 +17,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//List all Favorite table: {Email, IdPlayer}
 app.MapGet("/Favorite", () =>
 {
     var aux = new List<Favorite>();
@@ -25,6 +27,18 @@ app.MapGet("/Favorite", () =>
         aux = db.Favorites.ToList();
     }
     return aux;
+
+});
+//Add a new Favorite {Email, IdPlayer}
+app.MapPost("/Favorite", (Favorite favorite) =>
+{
+    using (var db = new DataBaseContext())
+    {
+        db.Favorites.Add(favorite);
+        db.SaveChanges();
+    }
+
+    return favorite;
 
 });
 
