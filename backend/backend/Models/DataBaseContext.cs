@@ -15,7 +15,6 @@ public partial class DataBaseContext : DbContext
     {
     }
 
-    public virtual DbSet<Drop> Drops { get; set; }
 
     public virtual DbSet<Favorite> Favorites { get; set; }
 
@@ -27,12 +26,6 @@ public partial class DataBaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Drop>(entity =>
-        {
-            entity.ToTable("drop");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
-        });
 
         modelBuilder.Entity<Favorite>(entity =>
         {

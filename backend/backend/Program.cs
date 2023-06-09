@@ -2,6 +2,8 @@ using backend.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -39,6 +41,15 @@ app.MapPost("/Favorite", (Favorite favorite) =>
     }
 
     return favorite;
+
+});
+app.MapGet("/Players", (int id) =>
+{
+
+    var aux = new AplicationDTO();
+    var lista = aux.GetListDataPlayer(id);
+
+    return lista;
 
 });
 
