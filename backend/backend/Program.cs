@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors(MyAllowSpecificOrigins);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -53,11 +55,10 @@ app.MapPost("/Favorite", (Favorite favorite) =>
     return favorite;
 
 });
-app.MapGet("/Players", (int id) =>
+app.MapGet("/ApplicationPlayer", (int page) =>
 {
-
-    var aux = new AplicationDTO();
-    var lista = aux.GetListDataPlayer(id);
+    var aux = new ApplicationPlayer();
+    var lista = aux.GetListDataPlayer(page);
 
     return lista;
 
