@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace backend.Models
 {
